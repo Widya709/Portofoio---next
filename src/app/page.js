@@ -1,69 +1,136 @@
-import Image from "next/image";
+import Hero from "@/components/Hero";
+import SkillCard from "@/components/SkillCard";
+
+const skills = [
+  { nama: "HTML", level: "Menengah" },
+  { nama: "CSS", level: "Menengah" },
+  { nama: "Git dan GitHub", level: "Dasar" },
+  { nama: "Desaign poster dengan Canva", level: "Mahir" },
+  { nama: "JavaScript", level: "Dasar" },
+];
+
+const jadwal = [
+  {
+    hari: "Senin",
+    waktu: "19.00 - 20.30",
+    kegiatan: "Mempelajari materi UBIG",
+  },
+  {
+    hari: "Selasa",
+    waktu: "19.00 - 20.15",
+    kegiatan: "Mengerjakan tugas UBIG",
+  },
+  {
+    hari: "Rabu",
+    waktu: "18.00 - 21.15",
+    kegiatan: "Mengerjakan tugas UBIG",
+  },
+  {
+    hari: "Kamis",
+    waktu: "19.00 - 20.30",
+    kegiatan: "Mengerjakan tugas Sekolah",
+  },
+  {
+    hari: "Jumat",
+    waktu: "19.00 - 20.30",
+    kegiatan: "Mengerjakan tugas Sekolah",
+  },
+  
+]
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.js
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="mx-auto max-w-5xl px-4 py-10">
+      <Hero
+      nama="Widya Aulia"
+      tagline="Siswa Kelas XI SMK Jurusan Rekayasa Perangkat Lunak, calon Junior Web Developer Kelas Industri UBIG."
+      />
+
+      {/* Tentang Saya */}
+      <section className="mt-10 rounded-xl bg-white p-6 shadow-sm">
+        <h2 className="mb-3 text-2xl font-bold text-utama">
+          Tentang Saya
+        </h2>
+        <p className="text-sm leading-relaxed text-slate-600">
+          Halo! Saya Widya Aulia, Siswi Kelas XI RPL 1 di Jurusan REKAYASA PERANGKAT LUNAK (RPL) . Saya tertarik dengan dunia teknologi.
+        </p>
+      </section>
+
+      {/* Hobi dan Cita-cita */ }
+      <section className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+        {/* Hobi */ }
+        <div className="rounded-xl bgwhite p-5 shadow-sm">
+          <h2 className="mb-3 text-xl font-bold text-utama">
+            Hobi
+          </h2>
+          <ul className="list-disc pl-5 text-sm leading-relaxed text-slate-600">
+            <li>Menonton film</li>
+            <li>Mendengarkan musik</li>
+            <li>Menulis cerita</li>
+          </ul>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
+
+        {/* Cita-cita */ }
+        <div className="rounded-xl bg-white p-5 shadow-sm">
+          <h2 className="mb-3 text-xl font-bold text-utama">
+            Cita-cita
+          </h2>
+          <p className="mt-2 list-decimal pl-5 text-sm leading-relaxed text-slate-600" >
+           Lawyer
+           </p>
+          <ol className="mt-2 list-decimal pl-5 -text-sm leading-relaxed text-slate-600">
+            <li>Menjadi wanita udara</li>
+            <li>Wara wiri ke berbagai negara</li>
+            <li>Melesat ke berbagai Benua</li>
+            <li>Dan Menembus Cakrawala</li>
+          </ol>
+        </div>
+      </section>
+
+      <section className="mt-10">
+        <h2 className="mb-4 text-2xl font-bold text-utama">Keahlian</h2>
+        <div className="grid gap-4 md:grid-cols-3">
+          {skills.map((skill) => (
+            <SkillCard
+              key={skill.nama}
+              nama={skill.nama}
+              level={skill.level}
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          ))}
         </div>
-      </main>
-    </div>
-  );
+      </section>
+
+      {/* Jadwal Kegiatan ubig */ }
+      <section className="mt-6 rounded-xl bg-white p-6 shadow-sm">
+        <h2 className="mb-4 text-2xl font-bold text-utama">Jadwal Kegiatan UBIG</h2>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse text-left text-sm text-slate-600">
+            <thead>
+              <tr
+              className="bg-sky-950 text-white">
+                <th className="px-4 py-3">Hari</th>
+                <th className="px-4 py-3">Waktu</th>
+                <th className="px-4 py-3">Kegiatan</th>
+              </tr>
+            </thead>
+            <tbody>
+              {jadwal.map((item, index) => (
+                <tr key={`${item.hari}-${index}`}>
+                  <td className="border px-4 py-3">{item.hari}</td>
+                  <td className="border px-4 py-3">{item.waktu}</td>
+                  <td className="border px-4 py-3">{item.kegiatan}</td>
+                </tr>
+              ))}
+            </tbody>
+
+          </table>
+        </div>
+        {/* Footer */ }
+        <footer className="mt-4 bg-sky-950 px-4 py-5 text-center text-sm text-white">
+          {new Date().getFullYear()} Widya Aulia | Dibuat dengan Next.js
+          | Kelas Industri UBIG
+        </footer>
+      </section>
+    </main> 
+  )
 }
