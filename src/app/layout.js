@@ -12,8 +12,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Widya Aulia - Portofolio",
-  description: "Portofolio Widya Aulia, Siswi Kelas XI SMK Jurusan Rekayasa Perangkat Lunak, calon Junior Web Developer Kelas Industri UBIG.",
+  title: "Rismaeka Mei saro - Portofolio",
+  description: "Portofolio Rismaeka Mei saro, Siswi Kelas XI SMK Jurusan Rekayasa Perangkat Lunak, calon Junior Web Developer Kelas Industri UBIG.",
 };
   
 // di dalam return, pada tag <html> lang="id"
