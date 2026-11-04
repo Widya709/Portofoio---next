@@ -5,6 +5,7 @@ import ProyekCard from "@/components/ProyekCard";
 import SkillCard from "@/components/SkillCard";
 import { proyek } from "@/data/proyek";
 
+
 export const metadata = {
   title: "Beranda",
   description: "Portofolio Widya Aulia, siswi Rekayasa Perangkat Lunak dan calon Junior Web Developer.",
@@ -31,7 +32,7 @@ export default function Home() {
       </div>
 
       <section className="mt-8 w-full min-w-0 sm:mt-10">
-        <h2 className="mb-4 break-words text-xl font-bold text-utama sm:text-2xl">
+        <h2 className="mb-4 break-words text-xl font-bold text-utama dark:text-sky-200 sm:text-2xl">
           Keahlian
         </h2>
         <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
@@ -46,7 +47,7 @@ export default function Home() {
       </section>
 
       <section className="mt-8 w-full min-w-0 sm:mt-10">
-        <h2 className="mb-4 break-words text-xl font-bold text-utama sm:text-2xl">
+        <h2 className="mb-4 break-words text-xl font-bold text-utama dark:text-sky-200 sm:text-2xl">
           Proyek Terbaru
         </h2>
         <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">

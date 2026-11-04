@@ -30,20 +30,20 @@ export default async function DetaiProyek({ params }) {
     return (
         <main className="mx-auto max-w-3xl px-4 py-10">
             <nav aria-label="Breadcrumb" className="text-sm">
-                <ol className="flex flex-wrap items-center gap-2 text-gray-600">
-                    <li><Link href="/" className="hover:text-aksen hover:underline">Beranda</Link></li>
+                <ol className="flex flex-wrap items-center gap-2 text-gray-600 dark:text-gray-400">
+                    <li><Link href="/" className="hover:text-aksen hover:underline dark:hover:text-rose-300">Beranda</Link></li>
                     <li aria-hidden="true">/</li>
-                    <li><Link href="/proyek" className="hover:text-aksen hover:underline">Proyek</Link></li>
+                    <li><Link href="/proyek" className="hover:text-aksen hover:underline dark:hover:text-rose-300">Proyek</Link></li>
                     <li aria-hidden="true">/</li>
-                    <li aria-current="page" className="font-semibold text-utama">{item.judul}</li>
+                    <li aria-current="page" className="font-semibold text-utama dark:text-sky-200">{item.judul}</li>
                 </ol>
             </nav>
 
-            <h1 className="mt-4 text-3xl font-bold text-utama md:text-4xl">
+            <h1 className="mt-4 text-3xl font-bold text-utama dark:text-sky-200 md:text-4xl">
                 {item.judul}
             </h1>
 
-            <p className="mt-2 text-gray-600">
+            <p className="mt-2 text-gray-600 dark:text-gray-400">
                 {item.kategori} &middot; Dibuat di {item.minggu}
             </p>
 
@@ -54,12 +54,12 @@ export default async function DetaiProyek({ params }) {
             height={420}
             loading="eager"
             style={{ width: "100%", height: "auto" }}
-            className="mt-6 h-auto w-full rounded-xl border border-gray-200"
+            className="mt-6 h-auto w-full rounded-xl border border-gray-200 dark:border-slate-700"
             />
 
             <p className="mt-6 text-lg">{item.deskripsi}</p>
 
-            <h2 className="mt-8 text-2xl font-bold text-utama">
+            <h2 className="mt-8 text-2xl font-bold text-utama dark:text-sky-200">
                 Yang Saya Pelajari
             </h2>
 
