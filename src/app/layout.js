@@ -1,4 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,18 +14,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Widya Aulia - Portofolio",
+  title: {
+    default: "Widya Aulia | Portofolio",
+    template: "%s | Widya Aulia",
+  },
   description: "Portofolio Widya Aulia, Siswi Kelas XI SMK Jurusan Rekayasa Perangkat Lunak, calon Junior Web Developer Kelas Industri UBIG.",
 };
   
-// di dalam return, pada tag <html> lang="id"
 export default function RootLayout({ children }) {
   return (
     <html
-      lang="en"
+      lang="id"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-later text-gray-800">{children}</body>
+      <body className="min-h-full flex flex-col bg-latar text-gray-800">
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
