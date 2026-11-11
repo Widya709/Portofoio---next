@@ -1,29 +1,34 @@
 "use client";
 
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
 
 export default function TombolTema() {
-    useEffect(() => {
-        const temaGelap = localStorage.getItem("tema") === "gelap";
-        document.documentElement.classList.toggle("dark", temaGelap);
-    }, []);
+  const [gelap, setGelap] = useState(false);
 
-    function gantiTema() {
-        const temaGelap = !document.documentElement.classList.contains("dark");
-        document.documentElement.classList.toggle("dark", temaGelap);
-        localStorage.setItem("tema", temaGelap ? "gelap" : "terang");
+  useEffect(() => {
+    const tema = localStorage.getItem("tema");
+    if (tema === "gelap") {
+      document.documentElement.classList.add("dark");
+      setGelap(true);
     }
+  }, []);
 
-    return (
-        <button
-        type="button"
-        onClick={gantiTema}
-        aria-label="Ubah tema terang atau gelap"
-        className="rounded-lg border border-white px-3 py-1 text-sm font-semibold text-white hover:border-aksen hover:bg-aksen"
-        >
-            <span className="dark:hidden">Mode Gelap</span>
-            <span className="hidden dark:inline">Mode Terang</span>
-        </button>
+  const gantiTema = () => {
+    document.documentElement.classList.toggle("dark");
 
-    );
+    const temaBaru = !gelap;
+    setGelap(temaBaru);
+    localStorage.setItem("tema", temaBaru ? "gelap" : "terang");
+  };
+
+  return (
+    <Button
+      variant="outline"
+      onClick={gantiTema}
+      className="border-white bg-transparent text-white hover:bg-aksen hover:text-white"
+    >
+      {gelap ? "Mode Terang" : "Mode Gelap"}
+    </Button>
+  );
 }

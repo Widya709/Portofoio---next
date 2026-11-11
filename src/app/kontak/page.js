@@ -1,5 +1,11 @@
 
 import FormKontak from "@/components/FormKontak";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 export const metadata = {
   title: "Kontak",
@@ -19,35 +25,43 @@ export default function Kontak() {
       </p>
 
       <div className="mt-8 grid gap-6 md:grid-cols-3">
-        <section className="rounded-xl border border-border bg-card p-6 shadow-sm md:col-span-2">
-          <FormKontak />
-        </section>
+        <Card className="md:col-span-2">
+          <CardContent>
+            <FormKontak />
+          </CardContent>
+        </Card>
 
-        <section className="min-h-72 rounded-xl border border-border bg-card p-6 shadow-sm">
-          <h2 className="mb-3 text-xl font-bold text-primary">
-            Temukan Saya di
-          </h2>
-          <ul className="space-y-1.5 text-sm">
-            <li>
-              <a
-                href="https://github.com/Widya709"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="break-all text-aksen hover:underline"
-              >
-                Github
-              </a>
-            </li>
-            <li>
-              <a
-                href="mailto:widyaaulia709@gmail.com"
-                className="break-all text-aksen hover:underline"
-              >
-                widyaaulia709@gmail.com
-              </a>
-            </li>
-          </ul>
-        </section>
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold text-primary">
+              Temukan Saya di
+            </CardTitle>
+          </CardHeader>
+
+          <CardContent>
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href="https://github.com/Widya709"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="break-all text-aksen hover:underline"
+                >
+                  Github
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="mailto:widyaaulia709@gmail.com"
+                  className="break-all text-aksen hover:underline"
+                >
+                  widyaaulia709@gmail.com
+                </a>
+              </li>
+            </ul>
+          </CardContent>
+        </Card>
       </div>
     </main>
   );

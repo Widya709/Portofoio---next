@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import Hero from "@/components/Hero";
 import ProyekCard from "@/components/ProyekCard";
@@ -11,15 +12,12 @@ export const metadata = {
     "Portofolio Widya Aulia, siswi Rekayasa Perangkat Lunak dan calon Junior Web Developer.",
 };
 
-const skills = [
-  { nama: "HTML", level: "Menengah" },
-  { nama: "CSS", level: "Menengah" },
-  { nama: "Git dan GitHub", level: "Dasar" },
-  { nama: "Desain poster dengan Canva", level: "Mahir" },
-  { nama: "JavaScript", level: "Dasar" },
-];
-
 export default async function Home() {
+  const { data: skills } = await supabase
+    .from("skills")
+    .select("*")
+    .order("id");
+
   const { data: proyekTerbaru, error } = await supabase
     .from("projects")
     .select("*")
@@ -37,10 +35,11 @@ export default async function Home() {
         <h2 className="mb-4 break-words text-xl font-bold text-primary sm:text-2xl">
           Keahlian
         </h2>
+
         <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-          {skills.map((skill) => (
+          {skills && skills.map((skill) => (
             <SkillCard
-              key={skill.nama}
+              key={skill.id}
               nama={skill.nama}
               level={skill.level}
             />
