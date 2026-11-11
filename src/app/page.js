@@ -1,14 +1,14 @@
-
 import Link from "next/link";
 import Hero from "@/components/Hero";
 import ProyekCard from "@/components/ProyekCard";
 import SkillCard from "@/components/SkillCard";
-import { proyek } from "@/data/proyek";
-
+import { buttonVariants } from "@/components/ui/button";
+import { supabase } from "@/lib/supabase";
 
 export const metadata = {
   title: "Beranda",
-  description: "Portofolio Widya Aulia, siswi Rekayasa Perangkat Lunak dan calon Junior Web Developer.",
+  description:
+    "Portofolio Widya Aulia, siswi Rekayasa Perangkat Lunak dan calon Junior Web Developer.",
 };
 
 const skills = [
@@ -19,20 +19,22 @@ const skills = [
   { nama: "JavaScript", level: "Dasar" },
 ];
 
-const proyekTerbaru = proyek.slice(-3);
+export default async function Home() {
+  const { data: proyekTerbaru, error } = await supabase
+    .from("projects")
+    .select("*")
+    .order("created_at", { ascending: false })
+    .limit(3);
 
-export default function Home() {
   return (
     <main className="mx-auto w-full min-w-0 max-w-5xl px-4 py-6 sm:px-6 sm:py-8">
-      <div className="w-full min-w-0">
-        <Hero
-          nama="Widya Aulia"
-          tagline="Siswa Kelas XI SMK Jurusan Rekayasa Perangkat Lunak, calon Junior Web Developer Kelas Industri UBIG."
-        />
-      </div>
+      <Hero
+        nama="Widya Aulia"
+        tagline="Siswa Kelas XI SMK Jurusan Rekayasa Perangkat Lunak, calon Junior Web Developer Kelas Industri UBIG."
+      />
 
       <section className="mt-8 w-full min-w-0 sm:mt-10">
-        <h2 className="mb-4 break-words text-xl font-bold text-utama dark:text-sky-200 sm:text-2xl">
+        <h2 className="mb-4 break-words text-xl font-bold text-primary sm:text-2xl">
           Keahlian
         </h2>
         <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
@@ -47,17 +49,33 @@ export default function Home() {
       </section>
 
       <section className="mt-8 w-full min-w-0 sm:mt-10">
-        <h2 className="mb-4 break-words text-xl font-bold text-utama dark:text-sky-200 sm:text-2xl">
+        <h2 className="mb-4 break-words text-xl font-bold text-primary sm:text-2xl">
           Proyek Terbaru
         </h2>
-        <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-          {proyekTerbaru.map((item) => (
-            <ProyekCard key={item.slug} proyek={item} />
-          ))}
-        </div>
+
+        {error && (
+          <p className="rounded-xl border border-dashed border-input p-6 text-center text-aksen">
+            Proyek terbaru gagal dimuat: {error.message}
+          </p>
+        )}
+
+        {!error && (!proyekTerbaru || proyekTerbaru.length === 0) && (
+          <p className="rounded-xl border border-dashed border-input p-6 text-center text-muted-foreground">
+            Belum ada proyek di database.
+          </p>
+        )}
+
+        {!error && proyekTerbaru && proyekTerbaru.length > 0 && (
+          <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+            {proyekTerbaru.map((item) => (
+              <ProyekCard key={item.slug} proyek={item} />
+            ))}
+          </div>
+        )}
+
         <Link
           href="/proyek"
-          className="mt-6 inline-block rounded-lg bg-utama px-5 py-2 font-semibold text-white hover:opacity-90"
+          className={buttonVariants({ size: "lg", className: "mt-6" })}
         >
           Lihat semua proyek
         </Link>
