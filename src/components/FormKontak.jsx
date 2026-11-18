@@ -149,7 +149,7 @@ export default function FormKontak() {
 
       {berhasil && (
         <p className="rounded-lg bg-green-100 p-3 text-green-800 dark:bg-green-900 dark:text-green-100">
-          Terima kasih, {nama}! Pesanmu sudah lolos pemeriksaan
+         Form ini belum mengirim pesan. Untuk menyapa saya, tulis pesan di halaman Buku Tamu.
         </p>
       )}
     </form>
